@@ -1,48 +1,66 @@
 ﻿namespace NeuralNetwork.Network.Logic
 {
-    public abstract class BaseLogicData
+    /// <summary>
+    /// наборы данных для логических операций
+    /// </summary>
+    public class LogicData
     {
         #region PROPERTIES
+        /// <summary>
+        /// Первый аргумент операции
+        /// </summary>
         public int X
         {
-            get; set;
+            get;
+            private set;
         }
+        /// <summary>
+        /// Второй аргумент операции
+        /// </summary>
         public int Y
         {
-            get; set;
+            get;
+            private set;
         }
+        /// <summary>
+        /// Ответ операции
+        /// </summary>
         public int Answer
         {
-            get; set;
+            get;
+            private set;
         }
         #endregion
-    }
 
-    public sealed class ORData : BaseLogicData
-    {
-        public ORData(int x, int y)
+        #region PUBLIC METHODS
+        /// <summary>
+        /// Логическое ИЛИ
+        /// </summary>
+        /// <param name="x">Первый аргумент</param>
+        /// <param name="y">Второй аргумент</param>
+        public void Or(int x, int y)
         {
-            X = x;
-            Y = y;
-            Answer = X | Y;
+            X = x; Y = y; Answer = x | y;
         }
-    }
-    public sealed class ANDData : BaseLogicData
-    {
-        public ANDData(int x, int y)
+        /// <summary>
+        /// Логическое И
+        /// </summary>
+        /// <param name="x">Первый аргумент</param>
+        /// <param name="y">Второй аргумент</param>
+        public void And(int x, int y)
         {
-            X = x;
-            Y = y;
-            Answer = x & y;
+            X = x; Y = y; Answer = x | y;
         }
-    }
-    public sealed class XORData : BaseLogicData
-    {
-        public XORData(int x, int y)
+        /// <summary>
+        /// Исключающее ИЛИ
+        /// </summary>
+        /// <param name="x">Первый аргумент</param>
+        /// <param name="y">Второй аргумент</param>
+        public void Xor(int x, int y)
         {
-            X = x;
-            Y = y;
-            Answer = x ^ y;
+            X = x; Y = y; Answer = x ^ y;
         }
+        #endregion
+
     }
 }
