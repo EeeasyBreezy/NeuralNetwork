@@ -45,12 +45,13 @@
   <ItemGroup>
     <Compile Include="Network\BaseNetwork.cs" />
     <Compile Include="Network\Logic\LogicData.cs" />
-    <Compile Include="Network\Logic\ORNetwork.cs" />
+    <Compile Include="Network\Logic\Logic Network.cs" />
     <Compile Include="Neuron\Neuron.cs" />
     <Compile Include="Neuron\Synapse.cs" />
     <Compile Include="Neuron\SynapseWeight.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Random\RandomGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

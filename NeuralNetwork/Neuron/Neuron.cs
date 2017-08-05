@@ -47,6 +47,10 @@ namespace NeuralNetwork.Neuron
         {
             get; set;
         }
+        public List<SynapseWeight> Weights
+        {
+            get; set;
+        }
         #endregion
 
         #region PUBLIC METHODS
@@ -71,7 +75,7 @@ namespace NeuralNetwork.Neuron
         /// </summary>
         public InputNeuron()
         {
-            Synapses = new List<Synapse>();
+            Weights = new List<SynapseWeight>();
         }
         #endregion
 
@@ -96,7 +100,7 @@ namespace NeuralNetwork.Neuron
         /// </summary>
         public InnerNeuron()
         {
-            Synapses = new List<Synapse>();
+            Weights = new List<SynapseWeight>();
         }
         #endregion
 
@@ -121,7 +125,7 @@ namespace NeuralNetwork.Neuron
         /// </summary>
         public OutputNeuron()
         {
-            Synapses = new List<Synapse>();
+            Weights = new List<SynapseWeight>();
         }
         #endregion
 

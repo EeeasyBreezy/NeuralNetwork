@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using NeuralNetwork.Neuron;
+using NeuralNetwork.Random;
 
 namespace NeuralNetwork.Network.Logic
 {
@@ -31,28 +33,29 @@ namespace NeuralNetwork.Network.Logic
         public override void CalculateError()
         {
         }
-
         public override void CalculateResult()
         {
+            for (int i = 0; i < inputNeurons.Count; i++)
+                inputNeurons[i].LaunchActivationFunction();
         }
-
         public override void InitNetwork(int inputNeuronsDim, int innerLayers, int[] dimPerLayer, int outputDim)
         {
             inputNeurons = new List<InputNeuron>(inputNeuronsDim);
-            for(int i = 0; i < inputNeurons.Capacity; i++)
-                inputNeurons.Add(new InputNeuron());
             innerNeurons = new List<List<InnerNeuron>>(innerLayers);
-            for (int i = 0; i < innerNeurons.Capacity; i++)
-            {
+            for (int i = 0; i < innerNeurons.Count; i++)
                 innerNeurons[i] = new List<InnerNeuron>(dimPerLayer[i]);
-                for (int j = 0; j < innerNeurons[i].Capacity; j++)
-                    innerNeurons[i].Add(new InnerNeuron());
-            }
             outputNeurons = new List<OutputNeuron>(outputDim);
-            for (int i = 0; i < outputNeurons.Capacity; i++)
-                outputNeurons.Add(new OutputNeuron());
+            for (int i = 0; i < inputNeurons.Count; i++)
+                for (int j = 0; j < innerNeurons[0].Count; j++)
+                    inputNeurons[i].Weights.Add(new SynapseWeight(RandomGenerator.GetDouble(-3, 3)));
+            for (int i = 0; i < innerNeurons.Count - 1; i++)
+                for (int j = 0; j < innerNeurons[i].Count; j++)
+                    for (int k = 0; k < innerNeurons[i + 1].Count; k++)
+                        innerNeurons[i][j].Weights.Add(new SynapseWeight(RandomGenerator.GetDouble(-3.0, 3.0)));
+            for (int i = 0; i < innerNeurons[innerNeurons.Count - 1].Count; i++)
+                for (int j = 0; j < outputNeurons.Count; j++)
+                    innerNeurons[innerNeurons.Count - 1][i].Weights.Add(new SynapseWeight(RandomGenerator.GetDouble(-3.0, 3.0)));
         }
-
         public override void LaunchTeachingMethod()
         {
         }

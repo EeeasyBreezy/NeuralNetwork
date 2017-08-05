@@ -27,7 +27,7 @@
         /// Конструктор
         /// </summary>
         /// <param name="value">Значение веса</param>
-        public SynapseWeight(int value)
+        public SynapseWeight(double value)
         {
             Value = value;
         }

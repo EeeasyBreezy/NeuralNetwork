@@ -20,6 +20,13 @@
         {
             get; set;
         }
+        /// <summary>
+        /// Начальная точка синапса
+        /// </summary>
+        public BaseNeuron SynapseInitPoint
+        {
+            get; set;
+        }
         #endregion
 
         #region CONSTRUCTORS
